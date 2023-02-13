@@ -26,7 +26,7 @@ public struct ComponentId: Equatable {
     }
 }
 
-public struct BaseComponent {
+public struct BaseComponent: Codable {
     let id: Int
     let input: Data?
 }
@@ -61,8 +61,9 @@ public class Component {
     }
     
     public static var allComponents: Components {
-        return []
+        return [.interval, .logicalList, .interactiveList]
     }
 }
 
 public typealias Components = [Component]
+public typealias BaseComponents = [BaseComponent]

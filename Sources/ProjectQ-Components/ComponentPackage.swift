@@ -7,7 +7,12 @@
 
 import Foundation
 
-struct ComponentPackage {
+struct ComponentPackage: Codable {
     let name: String
-    let components: Components
+    let baseComponents: BaseComponents
+    
+    var components: Components {
+        return baseComponents.compactMap { Component.fromBaseComponent($0) }
+    }
 }
+

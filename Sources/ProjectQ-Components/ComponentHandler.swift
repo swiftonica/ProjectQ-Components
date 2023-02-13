@@ -17,6 +17,7 @@ public protocol DataComponentHandler: ComponentHandler {
     func data(for data: Data) -> String
 }
 
-public protocol InteractiveComponentHandler: ComponentHandler {
+public protocol InteractiveComponentHandler: DataComponentHandler {
     func isDataCorrect(data: Data) -> Bool
+    func clear()
 }
