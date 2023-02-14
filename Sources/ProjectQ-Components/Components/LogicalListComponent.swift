@@ -23,7 +23,7 @@ extension Component {
 }
 
 class LogicalListComponentHandler: DataComponentHandler {
-    func getCache() -> Data {
+    func getCache() -> Data? {
         return Data()
     }
     

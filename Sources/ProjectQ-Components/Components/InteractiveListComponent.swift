@@ -23,7 +23,7 @@ extension Component {
 }
 
 class InteractiveListComponentHandler: InteractiveComponentHandler {
-    func getCache() -> Data {
+    func getCache() -> Data? {
         return Data()
     }
     

@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol ComponentHandler {
-    func getCache() -> Data
+    func getCache() -> Data?
 }
 
 public protocol AppearComponentHandler: ComponentHandler {

@@ -92,7 +92,8 @@ struct IntervalComponentHandlerInput: Codable {
 }
 
 class IntervalComponentHandler {
-    private var cache: Data?
+    // state
+    private var cachedInput: IntervalComponentHandlerInput!
 }
 
 //MARK: - helpers
@@ -135,6 +136,9 @@ extension IntervalComponentHandler: AppearComponentHandler {
         guard let input = try? JSONDecoder().decode(IntervalComponentHandlerInput.self, from: data) else {
             return false
         }
+
+        self.cachedInput = input // <- [!] set state
+        self.cachedInput.lastDate = Date() // <- [!] set state
         
         switch input.intervalType {
         case .byWeek(let days):
@@ -155,7 +159,7 @@ extension IntervalComponentHandler: AppearComponentHandler {
         return false
     }
     
-    func getCache() -> Data {
-        return Data()
+    func getCache() -> Data? {
+        return try? JSONEncoder().encode(self.cachedInput)
     }
 }
