@@ -7,7 +7,9 @@
 
 import Foundation
 
-public protocol ComponentHandler {}
+public protocol ComponentHandler {
+    func getCache() -> Data
+}
 
 public protocol AppearComponentHandler: ComponentHandler {
     func shouldAppear(data: Data) -> Bool

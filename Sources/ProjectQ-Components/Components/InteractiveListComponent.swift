@@ -23,6 +23,10 @@ extension Component {
 }
 
 class InteractiveListComponentHandler: InteractiveComponentHandler {
+    func getCache() -> Data {
+        return Data()
+    }
+    
     func isDataCorrect(data: Data) -> Bool {
         return false
     }
