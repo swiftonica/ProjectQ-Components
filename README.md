@@ -1,3 +1,3 @@
 # ProjectQ-Components
 
-A description of this package.
+A models library for all ProjectQ ecosystem
