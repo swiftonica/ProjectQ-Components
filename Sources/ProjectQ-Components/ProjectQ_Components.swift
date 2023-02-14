@@ -17,9 +17,7 @@ public struct ComponentInformation {
 
 public struct ComponentId: Equatable {
     public let id: Int
-
     public static let none = ComponentId(id: -1)
-    public static let newCompnent = ComponentId(id: 0)
     
     public init(id: Int) {
         self.id = id
