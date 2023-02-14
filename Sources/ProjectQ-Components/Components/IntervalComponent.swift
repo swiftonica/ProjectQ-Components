@@ -128,10 +128,6 @@ private extension IntervalComponentHandler {
         }
         return false
     }
-    
-    func actualInterval(_ value: Int) -> Int {
-        return 0
-    }
 }
 
 extension IntervalComponentHandler: AppearComponentHandler {
