@@ -91,7 +91,7 @@ struct IntervalComponentHandlerInput: Codable {
     var lastDate: Date
 }
 
-class IntervalComponentHandler {
+final class IntervalComponentHandler {
     // state
     private var cachedInput: IntervalComponentHandlerInput!
 }
