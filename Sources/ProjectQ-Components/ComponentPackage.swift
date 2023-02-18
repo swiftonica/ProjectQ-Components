@@ -7,11 +7,16 @@
 
 import Foundation
 
-struct ComponentPackage: Codable {
-    let name: String
-    let baseComponents: BaseComponents
+public struct ComponentPackage: Codable {
+    public init(name: String, baseComponents: BaseComponents) {
+        self.name = name
+        self.baseComponents = baseComponents
+    }
     
-    var components: Components {
+    public let name: String
+    public let baseComponents: BaseComponents
+    
+    public var components: Components {
         return baseComponents.compactMap { Component.fromBaseComponent($0) }
     }
 }
