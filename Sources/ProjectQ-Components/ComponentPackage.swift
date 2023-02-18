@@ -21,3 +21,5 @@ public struct ComponentPackage: Codable {
     }
 }
 
+public typealias ComponentPackages = [ComponentPackage]
+
