@@ -1,5 +1,5 @@
 //
-//  ComponentPackage.swift
+//  Task.swift
 //  ProjectQ-Components
 //
 //  Created by Jeytery on 13.02.2023.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct ComponentPackage: Codable {
+public struct Task: Codable {
     public init(name: String, baseComponents: BaseComponents) {
         self.name = name
         self.baseComponents = baseComponents
@@ -21,5 +21,5 @@ public struct ComponentPackage: Codable {
     }
 }
 
-public typealias ComponentPackages = [ComponentPackage]
+public typealias Tasks = [Task]
 
