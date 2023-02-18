@@ -11,3 +11,4 @@ public struct TaskPackage: Codable {
     public let tasks: Tasks
     public let name: String
 }
+public typealias TaskPackages = [TaskPackage]
