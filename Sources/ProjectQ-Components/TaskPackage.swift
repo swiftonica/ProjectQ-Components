@@ -8,6 +8,11 @@
 import Foundation
 
 public struct TaskPackage: Codable {
+    public init(tasks: Tasks, name: String) {
+        self.tasks = tasks
+        self.name = name
+    }
+    
     public let tasks: Tasks
     public let name: String
 }
