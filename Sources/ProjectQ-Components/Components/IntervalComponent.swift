@@ -32,7 +32,7 @@ extension Component {
     )
 }
 
-struct IntervalComponentHandlerInput: Codable {
+public struct IntervalComponentHandlerInput: Codable {
     public init(
         intervalType: IntervalComponentHandlerInput.IntervalType,
         time: Date,
@@ -86,9 +86,9 @@ struct IntervalComponentHandlerInput: Codable {
     
     public typealias WeekDays = [WeekDay]
 
-    let intervalType: IntervalType
-    let time: Date
-    var lastDate: Date
+    public let intervalType: IntervalType
+    public let time: Date
+    public var lastDate: Date
 }
 
 final class IntervalComponentHandler {
