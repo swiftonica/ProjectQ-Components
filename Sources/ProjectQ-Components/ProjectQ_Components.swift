@@ -63,5 +63,11 @@ public class Component {
     }
 }
 
+extension Component: Equatable {
+    public static func == (lhs: ProjectQ_Components.Component, rhs: ProjectQ_Components.Component) -> Bool {
+        return lhs.information.componentId.id == rhs.information.componentId.id
+    }
+}
+
 public typealias Components = [Component]
 public typealias BaseComponents = [BaseComponent]
