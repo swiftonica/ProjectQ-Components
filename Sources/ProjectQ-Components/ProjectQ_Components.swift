@@ -50,12 +50,17 @@ public enum HandlerType: String {
 
 public class Component {
     public var handlerType: HandlerType {
-        return .init(handler: self.handler as! ComponentHandler)
+        return .init(handler: self.hanlder)
     }
     
     public let information: ComponentInformation
-    public let handler: ComponentHandler.Type
     public var input: Data?
+    
+    public let _handlerType: ComponentHandler.Type
+   
+    public var hanlder: ComponentHandler {
+        return _handlerType.init()
+    }
     
     public static func fromBaseComponent(_ baseComponent: BaseComponent) -> Component? {
         return byComponentId(
@@ -73,7 +78,7 @@ public class Component {
 
     public init(information: ComponentInformation, handler: ComponentHandler.Type) {
         self.information = information
-        self.handler = handler
+        self._handlerType = handler
     }
     
     public func inputed(_ input: Data?) -> Component {
