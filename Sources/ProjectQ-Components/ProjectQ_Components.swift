@@ -89,6 +89,10 @@ public class Component {
     public static var allComponents: Components {
         return [.interval, .logicalList, .interactiveList]
     }
+    
+    public var baseComponent: BaseComponent {
+        return .init(id: self.information.componentId.id, input: self.input)
+    }
 }
 
 extension Component: Equatable {
@@ -99,3 +103,11 @@ extension Component: Equatable {
 
 public typealias Components = [Component]
 public typealias BaseComponents = [BaseComponent]
+
+public extension Array where Element == Component {
+    var baseComponents: BaseComponents {
+        return self.map {
+            $0.baseComponent
+        }
+    }
+}
