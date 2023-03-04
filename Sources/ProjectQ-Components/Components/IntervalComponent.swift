@@ -91,11 +91,6 @@ public struct IntervalComponentHandlerInput: Codable {
     public var lastDate: Date
 }
 
-final class IntervalComponentHandler {
-    // state
-    private var cachedInput: IntervalComponentHandlerInput!
-}
-
 //MARK: - helpers
 private extension IntervalComponentHandler {
     func substractDates(lhs: Date, rhs: Date) -> TimeInterval {
@@ -131,7 +126,9 @@ private extension IntervalComponentHandler {
     }
 }
 
-extension IntervalComponentHandler: AppearComponentHandler {
+public class IntervalComponentHandler: AppearComponentHandler {
+    required public init() {}
+    
     public func shouldAppear(data: Data) -> Bool {
         guard let input = try? JSONDecoder().decode(IntervalComponentHandlerInput.self, from: data) else {
             return false
@@ -159,7 +156,10 @@ extension IntervalComponentHandler: AppearComponentHandler {
         return false
     }
     
-    func getCache() -> Data? {
+    public func getCache() -> Data? {
         return try? JSONEncoder().encode(self.cachedInput)
     }
+    
+    //state
+    private var cachedInput: IntervalComponentHandlerInput!
 }

@@ -9,6 +9,8 @@ import Foundation
 
 public protocol ComponentHandler {
     func getCache() -> Data?
+    
+    init() 
 }
 
 public protocol AppearComponentHandler: ComponentHandler {

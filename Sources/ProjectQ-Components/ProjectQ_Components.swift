@@ -1,6 +1,10 @@
 import Foundation
 import UIKit
 
+public protocol InitializableComponentHandler {
+    init()
+}
+
 public struct ComponentInformation {
     public let name: String
     public let conflictedComponets: [ComponentId]?
@@ -43,26 +47,6 @@ public enum HandlerType: String {
         }
     }
 }
-
-class __Task {
-    var components: Components = []
-    
-    var shouldAppear: Bool {
-        for component in components {
-            guard
-                let handler = component.handler as? AppearComponentHandler,
-                let data = component.input
-            else {
-                continue
-            }
-            if handler.shouldAppear(data: data) {
-                return true
-            }
-        }
-        return false
-    }
-}
-
 
 public class Component {
     public var handlerType: HandlerType {
