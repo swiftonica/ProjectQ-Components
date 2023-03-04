@@ -29,10 +29,10 @@ public struct BaseComponent: Codable {
     let input: Data?
 }
 
-public enum HandlerType {
-    case appear
-    case data
-    case interactive
+public enum HandlerType: String {
+    case appear = "Appear Component"
+    case data = "Data Compnent"
+    case interactive = "Interactive Compnent"
 
     init(handler: ComponentHandler) {
         switch handler {
