@@ -29,7 +29,46 @@ public struct BaseComponent: Codable {
     let input: Data?
 }
 
+public enum HandlerType {
+    case appear
+    case data
+    case interactive
+
+    init(handler: ComponentHandler) {
+        switch handler {
+        case is AppearComponentHandler: self = .appear
+        case is DataComponentHandler: self = .data
+        case is InteractiveComponentHandler: self = .interactive
+        default: self = .appear
+        }
+    }
+}
+
+class __Task {
+    var components: Components = []
+    
+    var shouldAppear: Bool {
+        for component in components {
+            guard
+                let handler = component.handler as? AppearComponentHandler,
+                let data = component.input
+            else {
+                continue
+            }
+            if handler.shouldAppear(data: data) {
+                return true
+            }
+        }
+        return false
+    }
+}
+
+
 public class Component {
+    public var handlerType: HandlerType {
+        return .init(handler: self.handler as! ComponentHandler)
+    }
+    
     public let information: ComponentInformation
     public let handler: ComponentHandler.Type
     public var input: Data?

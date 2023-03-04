@@ -14,7 +14,7 @@ extension ComponentId {
 extension Component {
     public static let interactiveList = Component(
         information: .init(
-            name: "Logical List",
+            name: "Interactive List",
             conflictedComponents: nil,
             componentId: .interactiveList
         ),
