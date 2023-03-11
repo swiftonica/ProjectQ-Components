@@ -18,7 +18,7 @@ extension Component {
             conflictedComponents: nil,
             componentId: .logicalList
         ),
-        handler: IntervalComponentHandler.self
+        handler: LogicalListComponentHandler.self
     )
 }
 

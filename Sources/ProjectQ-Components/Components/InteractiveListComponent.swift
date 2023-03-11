@@ -18,7 +18,7 @@ extension Component {
             conflictedComponents: nil,
             componentId: .interactiveList
         ),
-        handler: IntervalComponentHandler.self
+        handler: InteractiveListComponentHandler.self
     )
 }
 
