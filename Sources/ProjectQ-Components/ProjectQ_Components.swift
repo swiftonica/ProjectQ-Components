@@ -41,8 +41,8 @@ public enum HandlerType: String {
     init(handler: ComponentHandler) {
         switch handler {
         case is AppearComponentHandler: self = .appear
-        case is DataComponentHandler: self = .data
         case is InteractiveComponentHandler: self = .interactive
+        case is DataComponentHandler: self = .data
         default: self = .appear
         }
     }
