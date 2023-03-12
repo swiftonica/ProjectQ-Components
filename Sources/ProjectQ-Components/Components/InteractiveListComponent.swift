@@ -12,7 +12,7 @@ extension ComponentId {
 }
 
 extension Component {
-    public static let interactiveList: Component {
+    public static var interactiveList: Component {
         return Component(
             information: .init(
                 name: "Interactive List",
