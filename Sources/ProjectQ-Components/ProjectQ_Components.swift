@@ -87,7 +87,7 @@ public class Component {
     }
     
     public static var allComponents: Components {
-        return [.interval, .logicalList, .interactiveList]
+        return [.interval]
     }
     
     public var baseComponent: BaseComponent {
