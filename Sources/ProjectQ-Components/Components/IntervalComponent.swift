@@ -49,14 +49,14 @@ public struct IntervalComponentHandlerInput: Codable {
         public let index: Int
         public let name: String
         
-        public static let sat = WeekDay(index: 0, name: "Saturday")
-        public static let sun = WeekDay(index: 1, name: "Sunday")
+        public static let sat = WeekDay(index: 5, name: "Saturday")
+        public static let sun = WeekDay(index: 6, name: "Sunday")
         
-        public static let mon = WeekDay(index: 2, name: "Monday")
-        public static let tue = WeekDay(index: 3, name: "Tuesday")
-        public static let wed = WeekDay(index: 4, name: "Wednesday")
-        public static let thu = WeekDay(index: 5, name: "Thursday")
-        public static let fri = WeekDay(index: 6, name: "Friday")
+        public static let mon = WeekDay(index: 0, name: "Monday")
+        public static let tue = WeekDay(index: 1, name: "Tuesday")
+        public static let wed = WeekDay(index: 2, name: "Wednesday")
+        public static let thu = WeekDay(index: 3, name: "Thursday")
+        public static let fri = WeekDay(index: 4, name: "Friday")
         
         public static var allCases: [IntervalComponentHandlerInput.WeekDay] = [
             .mon, .tue, .wed, .thu, .fri, .sat, .sun
