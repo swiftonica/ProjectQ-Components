@@ -26,21 +26,21 @@ extension Component {
     }
 }
 
-class DescriptionComponentHandler: DataComponentHandler {
-    struct Input: Codable {
-        let description: String
+public class DescriptionComponentHandler: DataComponentHandler {
+    public struct Input: Codable {
+        public let description: String
     }
     
-    required init() {}
+    public required init() {}
     
-    func data(for data: Data) -> String {
+    public func data(for data: Data) -> String {
         guard let input = try? JSONDecoder().decode(DescriptionComponentHandler.Input.self, from: data) else {
             return "Error with decoding"
         }
         return input.description
     }
     
-    func getCache() -> Data? {
+    public func getCache() -> Data? {
         return nil
     }
 }
