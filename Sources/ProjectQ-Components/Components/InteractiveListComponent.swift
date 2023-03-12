@@ -12,14 +12,16 @@ extension ComponentId {
 }
 
 extension Component {
-    public static let interactiveList = Component(
-        information: .init(
-            name: "Interactive List",
-            conflictedComponents: nil,
-            componentId: .interactiveList
-        ),
-        handler: InteractiveListComponentHandler.self
-    )
+    public static let interactiveList: Component {
+        return Component(
+            information: .init(
+                name: "Interactive List",
+                conflictedComponents: nil,
+                componentId: .interactiveList
+            ),
+            handler: InteractiveListComponentHandler.self
+        )
+    }
 }
 
 class InteractiveListComponentHandler: InteractiveComponentHandler {

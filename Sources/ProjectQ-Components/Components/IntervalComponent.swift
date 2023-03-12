@@ -22,14 +22,16 @@ extension ComponentId {
 }
 
 extension Component {
-    public static let interval = Component(
-        information: .init(
-            name: "Interval",
-            conflictedComponents: nil,
-            componentId: .interval
-        ),
-        handler: IntervalComponentHandler.self
-    )
+    public static var interval: Component {
+        return Component(
+            information: .init(
+                name: "Interval",
+                conflictedComponents: nil,
+                componentId: .interval
+            ),
+            handler: IntervalComponentHandler.self
+        )
+    }
 }
 
 public struct IntervalComponentHandlerInput: Codable {

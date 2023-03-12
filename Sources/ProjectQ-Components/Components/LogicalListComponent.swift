@@ -12,14 +12,16 @@ extension ComponentId {
 }
 
 extension Component {
-    public static let logicalList = Component(
-        information: .init(
-            name: "Logical List",
-            conflictedComponents: nil,
-            componentId: .logicalList
-        ),
-        handler: LogicalListComponentHandler.self
-    )
+    public static var logicalList: Component {
+        return Component(
+            information: .init(
+                name: "Logical List",
+                conflictedComponents: nil,
+                componentId: .logicalList
+            ),
+            handler: LogicalListComponentHandler.self
+        )
+    }
 }
 
 class LogicalListComponentHandler: DataComponentHandler {
