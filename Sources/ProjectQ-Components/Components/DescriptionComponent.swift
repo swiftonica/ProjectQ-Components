@@ -28,6 +28,10 @@ extension Component {
 
 public class DescriptionComponentHandler: DataComponentHandler {
     public struct Input: Codable {
+        public init(description: String) {
+            self.description = description
+        }
+        
         public let description: String
     }
     
