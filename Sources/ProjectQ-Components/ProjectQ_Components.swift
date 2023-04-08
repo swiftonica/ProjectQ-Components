@@ -29,8 +29,13 @@ public struct ComponentId: Equatable {
 }
 
 public struct BaseComponent: Codable {
-    let id: Int
-    let input: Data?
+    public init(id: Int, input: Data? = nil) {
+        self.id = id
+        self.input = input
+    }
+    
+    public let id: Int
+    public let input: Data?
 }
 
 public enum HandlerType: String {
