@@ -32,6 +32,29 @@ extension Component {
             handler: IntervalComponentHandler.self
         )
     }
+    
+    public static func interval(input: IntervalComponentHandlerInput) -> Component {
+        guard let input = try? JSONEncoder().encode(input) else {
+            return Component(
+                information: .init(
+                    name: "Interval",
+                    conflictedComponents: nil,
+                    componentId: .interval
+                ),
+                handler: IntervalComponentHandler.self
+            )
+        }
+        
+        return Component(
+            information: .init(
+                name: "Interval",
+                conflictedComponents: nil,
+                componentId: .interval
+            ),
+            handler: IntervalComponentHandler.self
+        )
+        .inputed(input)
+    }
 }
 
 public struct IntervalComponentHandlerInput: Codable {
