@@ -24,6 +24,13 @@ extension Component {
             handler: DescriptionComponentHandler.self
         )
     }
+    
+    public static func description(input: DescriptionComponentHandler.Input) -> Component {
+        guard let input = try? JSONEncoder().encode(input) else {
+            return self.description
+        }
+        return self.description.inputed(input)
+    }
 }
 
 public class DescriptionComponentHandler: DataComponentHandler {

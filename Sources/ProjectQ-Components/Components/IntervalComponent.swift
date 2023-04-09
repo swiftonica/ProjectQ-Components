@@ -35,25 +35,9 @@ extension Component {
     
     public static func interval(input: IntervalComponentHandlerInput) -> Component {
         guard let input = try? JSONEncoder().encode(input) else {
-            return Component(
-                information: .init(
-                    name: "Interval",
-                    conflictedComponents: nil,
-                    componentId: .interval
-                ),
-                handler: IntervalComponentHandler.self
-            )
+            return self.interval
         }
-        
-        return Component(
-            information: .init(
-                name: "Interval",
-                conflictedComponents: nil,
-                componentId: .interval
-            ),
-            handler: IntervalComponentHandler.self
-        )
-        .inputed(input)
+        return self.interval.inputed(input)
     }
 }
 
