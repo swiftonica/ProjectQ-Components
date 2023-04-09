@@ -195,7 +195,7 @@ public class IntervalComponentHandler: AppearComponentHandler {
                     """
                     seconds: \(seconds) \n
                     lastDate: \(input.lastDate)
-                    
+                    endDate: \(endDate)
                     """
                 )
                 
