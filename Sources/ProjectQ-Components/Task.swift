@@ -23,10 +23,11 @@ public struct Task: Codable {
     public var shouldAppear: Bool {
         for component in components {
             if let handler = component.hanlder as? AppearComponentHandler, let input = component.input {
+                let shouldAppear = handler.shouldAppear(data: input)
                 if let cachedData = handler.getCache() {
                     component.input = cachedData
                 }
-                return handler.shouldAppear(data: input)
+                return shouldAppear
             }
         }
         return false
