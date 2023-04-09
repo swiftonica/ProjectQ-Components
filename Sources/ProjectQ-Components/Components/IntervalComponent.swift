@@ -94,6 +94,7 @@ public struct IntervalComponentHandlerInput: Codable {
         
         case minutesInterval(Int)
         case secondsInterval(Int)
+        case hoursInterval(Int)
     }
     
     public typealias WeekDays = [WeekDay]
@@ -163,13 +164,48 @@ public class IntervalComponentHandler: AppearComponentHandler {
             break
             
         case .interval(let interval):
-            let nowDate = Date()
-            let actualInterval = self.substractDates(lhs: nowDate, rhs: input.lastDate)
-            
-            if Int(actualInterval / (3600*24)) == interval, isNowTimeBigger(input.time) {
-                return true
+            let calendar = Calendar.current
+            let startDate = input.lastDate
+            let endDate = Date()
+            let components = calendar.dateComponents([.day], from: startDate, to: endDate)
+
+            if let days = components.day {
+                if days >= interval {
+                    self.cachedInput = input // <- [!] set state
+                    self.cachedInput?.lastDate = Date() // <- [!] set state
+                    print(
+                        """
+                        [!]
+                        cachedInput: \(cachedInput) \n
+                        """
+                    )
+                    
+                    return true
+                }
             }
-            break
+            return false
+            
+        case .hoursInterval(let interval):
+            let calendar = Calendar.current
+            let startDate = input.lastDate
+            let endDate = Date()
+            let components = calendar.dateComponents([.hour], from: startDate, to: endDate)
+
+            if let hours = components.hour {
+                if hours >= interval {
+                    self.cachedInput = input // <- [!] set state
+                    self.cachedInput?.lastDate = Date() // <- [!] set state
+                    print(
+                        """
+                        [!]
+                        cachedInput: \(cachedInput) \n
+                        """
+                    )
+                    
+                    return true
+                }
+            }
+            return false
             
         case .minutesInterval(let interval):
             let calendar = Calendar.current
@@ -178,7 +214,16 @@ public class IntervalComponentHandler: AppearComponentHandler {
             let components = calendar.dateComponents([.minute], from: startDate, to: endDate)
 
             if let minutes = components.minute {
-                if minutes == interval, isNowTimeBigger(input.time) {
+                if minutes >= interval {
+                    self.cachedInput = input // <- [!] set state
+                    self.cachedInput?.lastDate = Date() // <- [!] set state
+                    print(
+                        """
+                        [!]
+                        cachedInput: \(cachedInput) \n
+                        """
+                    )
+                    
                     return true
                 }
             }
@@ -191,14 +236,6 @@ public class IntervalComponentHandler: AppearComponentHandler {
             let components = calendar.dateComponents([.second], from: startDate, to: endDate)
 
             if let seconds = components.second {
-                print(
-                    """
-                    seconds: \(seconds) \n
-                    lastDate: \(input.lastDate)
-                    endDate: \(endDate)
-                    """
-                )
-                
                 if seconds >= interval {
                     self.cachedInput = input // <- [!] set state
                     self.cachedInput?.lastDate = Date() // <- [!] set state
