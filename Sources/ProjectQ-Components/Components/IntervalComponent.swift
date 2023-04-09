@@ -142,12 +142,18 @@ public class IntervalComponentHandler: AppearComponentHandler {
     required public init() {}
     
     public func shouldAppear(data: Data) -> Bool {
-        guard let input = try? JSONDecoder().decode(IntervalComponentHandlerInput.self, from: data) else {
+        let input: IntervalComponentHandlerInput
+         
+        if let _input = self.cachedInput {
+            input = _input
+        }
+        else if let _input = try? JSONDecoder().decode(IntervalComponentHandlerInput.self, from: data) {
+            input = _input
+        }
+        else {
+            print("debug: [!] Error. Some problems with input in IntervalComponentHandler")
             return false
         }
-
-        self.cachedInput = input // <- [!] set state
-        self.cachedInput.lastDate = Date() // <- [!] set state
         
         switch input.intervalType {
         case .byWeek(let days):
@@ -167,7 +173,7 @@ public class IntervalComponentHandler: AppearComponentHandler {
             
         case .minutesInterval(let interval):
             let calendar = Calendar.current
-            let startDate =  input.lastDate
+            let startDate = input.lastDate
             let endDate = Date()
             let components = calendar.dateComponents([.minute], from: startDate, to: endDate)
 
@@ -186,6 +192,8 @@ public class IntervalComponentHandler: AppearComponentHandler {
 
             if let minutes = components.second {
                 if minutes == interval, isNowTimeBigger(input.time) {
+                    self.cachedInput = input // <- [!] set state
+                    self.cachedInput?.lastDate = Date() // <- [!] set state
                     return true
                 }
             }
@@ -200,5 +208,5 @@ public class IntervalComponentHandler: AppearComponentHandler {
     }
     
     //state
-    private var cachedInput: IntervalComponentHandlerInput!
+    private var cachedInput: IntervalComponentHandlerInput?
 }
