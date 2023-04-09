@@ -13,7 +13,7 @@ public struct TaskPackage: Codable {
         self.name = name
     }
     
-    public let tasks: Tasks
+    public var tasks: Tasks
     public let name: String
 }
 public typealias TaskPackages = [TaskPackage]
