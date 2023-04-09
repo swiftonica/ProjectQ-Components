@@ -34,7 +34,7 @@ public struct BaseComponent: Codable {
     }
     
     public let id: Int
-    public let input: Data?
+    public var input: Data?
 }
 
 public enum HandlerType: String {

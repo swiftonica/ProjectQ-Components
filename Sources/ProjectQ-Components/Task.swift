@@ -14,18 +14,20 @@ public struct Task: Codable {
     }
     
     public let name: String
-    public let baseComponents: BaseComponents
+    public var baseComponents: BaseComponents
     
     public var components: Components {
         return baseComponents.compactMap { Component.fromBaseComponent($0) }
     }
     
-    public var shouldAppear: Bool {
-        for component in components {
+    public mutating func shouldAppear() -> Bool {
+        for componentIndex in 0 ..< components.count {
+            let component = components[componentIndex]
             if let handler = component.hanlder as? AppearComponentHandler, let input = component.input {
                 let shouldAppear = handler.shouldAppear(data: input)
                 if let cachedData = handler.getCache() {
                     component.input = cachedData
+                    baseComponents[componentIndex].input = cachedData
                 }
                 return shouldAppear
             }
