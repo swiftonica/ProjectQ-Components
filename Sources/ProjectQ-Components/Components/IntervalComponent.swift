@@ -191,9 +191,24 @@ public class IntervalComponentHandler: AppearComponentHandler {
             let components = calendar.dateComponents([.second], from: startDate, to: endDate)
 
             if let seconds = components.second {
+                print(
+                    """
+                    seconds: \(seconds) \n
+                    lastDate: \(input.lastDate)
+                    
+                    """
+                )
+                
                 if seconds == interval {
                     self.cachedInput = input // <- [!] set state
                     self.cachedInput?.lastDate = Date() // <- [!] set state
+                    print(
+                        """
+                        [!]
+                        cachedInput: \(cachedInput) \n
+                        """
+                    )
+                    
                     return true
                 }
             }
@@ -213,3 +228,4 @@ public class IntervalComponentHandler: AppearComponentHandler {
     //state
     private var cachedInput: IntervalComponentHandlerInput?
 }
+    
