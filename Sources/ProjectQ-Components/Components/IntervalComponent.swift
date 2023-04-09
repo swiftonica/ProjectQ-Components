@@ -199,7 +199,7 @@ public class IntervalComponentHandler: AppearComponentHandler {
                     """
                 )
                 
-                if seconds == interval {
+                if seconds >= interval {
                     self.cachedInput = input // <- [!] set state
                     self.cachedInput?.lastDate = Date() // <- [!] set state
                     print(
