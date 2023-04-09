@@ -190,8 +190,8 @@ public class IntervalComponentHandler: AppearComponentHandler {
             let endDate = Date()
             let components = calendar.dateComponents([.second], from: startDate, to: endDate)
 
-            if let minutes = components.second {
-                if minutes == interval, isNowTimeBigger(input.time) {
+            if let seconds = components.second {
+                if seconds == interval, isNowTimeBigger(input.time) {
                     self.cachedInput = input // <- [!] set state
                     self.cachedInput?.lastDate = Date() // <- [!] set state
                     return true

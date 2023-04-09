@@ -19,6 +19,18 @@ public struct Task: Codable {
     public var components: Components {
         return baseComponents.compactMap { Component.fromBaseComponent($0) }
     }
+    
+    public var shouldAppear: Bool {
+        for component in components {
+            if let handler = component.hanlder as? AppearComponentHandler, let input = component.input {
+                if let cachedData = handler.getCache() {
+                    component.input = cachedData
+                }
+                return handler.shouldAppear(data: input)
+            }
+        }
+        return false
+    }
 }
 
 public typealias Tasks = [Task]
