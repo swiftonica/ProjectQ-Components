@@ -62,9 +62,7 @@ public class Component {
     
     public let _handlerType: ComponentHandler.Type
    
-    public var hanlder: ComponentHandler {
-        return _handlerType.init()
-    }
+    public lazy var hanlder: ComponentHandler = _handlerType.init()
     
     public static func fromBaseComponent(_ baseComponent: BaseComponent) -> Component? {
         return byComponentId(
