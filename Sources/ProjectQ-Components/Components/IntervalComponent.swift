@@ -204,6 +204,9 @@ public class IntervalComponentHandler: AppearComponentHandler {
     }
     
     public func getCache() -> Data? {
+        if cachedInput == nil {
+            return nil 
+        }
         return try? JSONEncoder().encode(self.cachedInput)
     }
     
